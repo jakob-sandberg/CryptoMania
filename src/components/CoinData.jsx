@@ -2,7 +2,6 @@ import React from "react";
 import "../css/CoinData.css";
 
 const CoinData = ({ data }) => {
-  console.log(data);
   const renderData = () => {
     if (data) {
       return (

@@ -10,7 +10,7 @@ const TrendingList = () => {
       .get("https://api.coingecko.com/api/v3/search/trending")
       .then((res) => {
         setCoins(res.data.coins);
-        console.log("trending", res.data.coins);
+        // console.log("trending", res.data.coins);
       })
       .catch((error) => console.log(error));
   }, []);

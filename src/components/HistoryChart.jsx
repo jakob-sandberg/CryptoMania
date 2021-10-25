@@ -23,7 +23,6 @@ const HistoryChart = ({ data }) => {
 
   useEffect(() => {
     if (chartRef && chartRef.current && detail) {
-      // eslint-disable-next-line
       const chartInstance = new Chartjs(chartRef.current, {
         type: "line",
         data: {
@@ -49,7 +48,7 @@ const HistoryChart = ({ data }) => {
     if (detail) {
       return (
         <>
-          <p className="my-0">${detail.current_price.toFixed(2)}</p>
+          <p className="my-0">${detail.current_price.toFixed(6)}</p>
           <p
             className={
               detail.price_change_24h < 0

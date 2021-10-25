@@ -8,9 +8,9 @@ import "../App.css";
 const Feed = () => {
   const { data } = useQuery("feed", getFeed);
 
-  if (data) {
+  /*   if (data) {
     console.log("feed", data.data);
-  }
+  } */
 
   return (
     <Container>

@@ -61,11 +61,11 @@ const CoinDetailPage = () => {
     };
 
     fetchData();
-  });
+  }, []);
 
-  if (coinData) {
+  /*  if (coinData) {
     console.log("COINPAGE", coinData.detail);
-  }
+  } */
 
   const renderData = () => {
     if (isLoading) {
