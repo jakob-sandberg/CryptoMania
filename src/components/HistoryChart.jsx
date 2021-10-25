@@ -23,6 +23,7 @@ const HistoryChart = ({ data }) => {
 
   useEffect(() => {
     if (chartRef && chartRef.current && detail) {
+      // eslint-disable-next-line no-unused-vars
       const chartInstance = new Chartjs(chartRef.current, {
         type: "line",
         data: {
