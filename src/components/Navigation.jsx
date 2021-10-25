@@ -12,7 +12,7 @@ const Navigation = () => {
       <Navbar bg="dark" variant="dark" expand="sm">
         <Container>
           <Link to="/" className="navbar-brand">
-            <img src={logo} />
+            <img alt="logo" src={logo} />
             <span className="nav-span">CryptoMania</span>
           </Link>
 

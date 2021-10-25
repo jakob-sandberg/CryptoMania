@@ -6,7 +6,7 @@ import { getFeed } from "../apis/API";
 import "../App.css";
 
 const Feed = () => {
-  const { data, isLoading, isError, error } = useQuery("feed", getFeed);
+  const { data } = useQuery("feed", getFeed);
 
   if (data) {
     console.log("feed", data.data);

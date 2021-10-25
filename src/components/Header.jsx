@@ -33,7 +33,7 @@ const Header = () => {
           </div>
           <p className="info">advertisement</p>
           <div className="right-container">
-            <img className="ad-image" src={data.image} />
+            <img alt="coinImage" className="ad-image" src={data.image} />
             <p className="ad-data">{data.description}</p>
           </div>
         </div>

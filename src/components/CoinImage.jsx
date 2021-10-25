@@ -6,7 +6,7 @@ const CoinImage = ({ data }) => {
     if (data) {
       return (
         <div>
-          <img className="crypto-image" src={data.image} />
+          <img alt="CryptoImage" className="crypto-image" src={data.image} />
         </div>
       );
     }
