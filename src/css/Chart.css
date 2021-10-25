@@ -1,0 +1,36 @@
+.chart-container {
+  color: #fff;
+  width: 600px;
+}
+
+.myChart {
+  color: #9c9c9c;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.time-button {
+  border: none;
+  background-color: grey;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.time-button:hover {
+  background-color: rgb(71, 71, 71);
+  color: white;
+}
+
+label {
+  font-size: 30px;
+}

@@ -1,0 +1,10 @@
+.trending-container {
+  padding: 40px;
+  height: 900px;
+  background-color: rgba(0, 0, 0, 0.432);
+}
+
+.trend-rubrik {
+  display: flex;
+  justify-content: center;
+}

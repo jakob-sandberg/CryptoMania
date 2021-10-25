@@ -1,0 +1,16 @@
+img {
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+  margin-top: -5px;
+}
+
+.nav-span {
+  font-size: 2rem;
+  color: rgb(252, 253, 253);
+}
+
+.links {
+  display: flex;
+  margin-right: auto;
+}

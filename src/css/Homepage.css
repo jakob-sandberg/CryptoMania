@@ -1,0 +1,13 @@
+.home-page {
+  min-height: 900px;
+  background-color: rgba(0, 0, 0, 0.432);
+}
+
+.homePage-container {
+  display: flex;
+  justify-content: center;
+}
+
+.coinList {
+  width: 50%;
+}
