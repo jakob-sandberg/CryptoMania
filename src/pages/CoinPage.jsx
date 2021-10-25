@@ -61,7 +61,7 @@ const CoinDetailPage = () => {
     };
 
     fetchData();
-  }, []);
+  });
 
   if (coinData) {
     console.log("COINPAGE", coinData.detail);
