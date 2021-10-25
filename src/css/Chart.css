@@ -34,3 +34,13 @@
 label {
   font-size: 30px;
 }
+
+.percentGreen {
+  color: rgb(136, 245, 47);
+  font-size: 20px;
+}
+
+.percentRed {
+  font-size: 20px;
+  color: red;
+}
