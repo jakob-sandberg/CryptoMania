@@ -6,7 +6,7 @@
 .coin-row {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   height: 4vw;
   border-bottom: 1px solid #d7d7d7;
@@ -75,7 +75,7 @@
   .coin-row {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     height: 6vw;
     border-bottom: 1px solid #d7d7d7;
@@ -136,7 +136,7 @@
   .coin-row {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     height: auto;
     border-bottom: 1px solid #d7d7d7;
