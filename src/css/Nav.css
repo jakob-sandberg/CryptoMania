@@ -13,4 +13,6 @@ img {
 .links {
   display: flex;
   margin-right: auto;
+  font-size: 20px;
+  font-family: "Bebas Neue", cursive;
 }

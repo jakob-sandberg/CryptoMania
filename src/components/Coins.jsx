@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../css/Coins.css";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+
+import { AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
+import { FavCoinContext } from "../context/FavCoinContext";
 
 const Coins = ({
   name,
@@ -12,8 +17,35 @@ const Coins = ({
   marketcap,
   id,
 }) => {
+  const { activeUser } = useContext(UserContext);
+  const { favCoin, setFavCoin } = useContext(FavCoinContext);
+
+  const handleFavCoin = (id) => {
+    if (!favCoin) {
+      setFavCoin(true);
+      console.log("jaha", id);
+    } else if (favCoin) {
+      setFavCoin(!favCoin);
+    }
+  };
+
   return (
-    <div className="coin-container">
+    <div className="coin-container" key={id}>
+      <div className="coin-fav">
+        {activeUser ? (
+          favCoin ? (
+            <div>
+              <AiFillHeart onClick={() => handleFavCoin(id)} size={25} />
+            </div>
+          ) : (
+            <div>
+              <AiOutlineHeart onClick={() => handleFavCoin(id)} size={25} />
+            </div>
+          )
+        ) : (
+          ""
+        )}
+      </div>
       <Link
         to={`/crypto/${id}`}
         style={{ textDecoration: "none", color: "white" }}

@@ -3,7 +3,7 @@ import Coins from "../components/Coins";
 import axios from "axios";
 import "../App.css";
 
-const Cryptopage = () => {
+const CoinList = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -60,4 +60,4 @@ const Cryptopage = () => {
   );
 };
 
-export default Cryptopage;
+export default CoinList;

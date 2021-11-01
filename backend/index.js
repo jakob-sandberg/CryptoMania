@@ -6,11 +6,9 @@ const port = 3001;
 const uri =
   "mongodb+srv://jaksan:jakkhino20@crypto.pmfle.mongodb.net/Crypto?retryWrites=true&w=majority";
 
+//mongodb+srv://jaksan:<password>@crypto.pmfle.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
 const userRoutes = require("./routes/userRoutes");
-const saloonRoutes = require("./routes/saloonRoutes");
-const movieRoutes = require("./routes/movieRoutes");
-const bookingRoutes = require("./routes/bookingRoutes");
-const showingRoutes = require("./routes/showingRoutes");
 
 // Server Setup
 const app = express();
@@ -32,13 +30,13 @@ mongoose
   .connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
+    useNewUrlParser: true,
   })
   .then(() => {
-    // console.log("MongoDB Connected...");
+    console.log("MongoDB Connected...");
   })
   .catch((err) => {
-    // console.log(err);
+    console.log(err);
   });
 
 // ACL setup, we add our middleware before our routehandlers.
@@ -62,10 +60,6 @@ app.use((req, res, next) => {
 
 // Routes setup
 app.use("/api/v1/users", userRoutes);
-app.use("/api/v1/saloons", saloonRoutes);
-app.use("/api/v1/movies", movieRoutes);
-app.use("/api/v1/bookings", bookingRoutes);
-app.use("/api/v1/showings", showingRoutes);
 
 // Start Server
 app.listen(port, (err) => {

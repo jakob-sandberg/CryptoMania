@@ -5,7 +5,11 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none !important;
-  font-family: "Bebas Neue", cursive;
+  /* font-family: "Bebas Neue", cursive; */
+}
+
+.coinList-container {
+  display: flex;
 }
 
 ul {
