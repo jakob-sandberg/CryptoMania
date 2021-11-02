@@ -9,6 +9,7 @@ const uri =
 //mongodb+srv://jaksan:<password>@crypto.pmfle.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
 const userRoutes = require("./routes/userRoutes");
+const favoriteRoutes = require("./routes/favoriteRoutes");
 
 // Server Setup
 const app = express();
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
 
 // Routes setup
 app.use("/api/v1/users", userRoutes);
+app.use("api/v1/favorite", favoriteRoutes);
 
 // Start Server
 app.listen(port, (err) => {

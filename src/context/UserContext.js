@@ -5,7 +5,6 @@ export const UserContext = createContext();
 const UserContextProvider = (props) => {
   const [showLogin, setShowLogin] = useState(true);
   const [activeUser, setActiveUser] = useState(undefined);
-  const [bookings, setBookings] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState(null);
   const [loginResult, setLoginResult] = useState(null);
@@ -143,8 +142,6 @@ const UserContextProvider = (props) => {
   const values = {
     activeUser,
     setActiveUser,
-    bookings,
-    setBookings,
     loginUser,
     createUser,
     logout,
