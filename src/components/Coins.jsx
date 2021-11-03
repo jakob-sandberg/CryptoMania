@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../css/Coins.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
@@ -9,26 +9,40 @@ import { FavCoinContext } from "../context/FavCoinContext";
 
 const Coins = (coin) => {
   const { activeUser } = useContext(UserContext);
-  const { favCoin, setFavCoin } = useContext(FavCoinContext);
+  const [favCoin, setFavCoin] = useState(false);
 
-  const handleFavCoin = (coin) => {
+  const { storeFavCoin, deleteFavCoin } = useContext(FavCoinContext);
+
+  const handleFavCoin = (coinId) => {
     if (!favCoin) {
       setFavCoin(true);
+      let favToSave = {
+        coinId,
+      };
+      storeFavCoin(favToSave);
+      console.log(favToSave);
     } else if (favCoin) {
       setFavCoin(!favCoin);
+      deleteFavCoin(coinId, activeUser._id);
     }
   };
 
-  console.log("COIN", coin.coin);
+  //  console.log("COIN", coin.coin.id);
 
   return (
     <div className="coin-container">
       <div className="coin-fav">
         {activeUser ? (
           favCoin ? (
-            <AiFillHeart onClick={() => handleFavCoin(coin)} size={25} />
+            <AiFillHeart
+              onClick={() => handleFavCoin(coin.coin.id)}
+              size={25}
+            />
           ) : (
-            <AiOutlineHeart onClick={() => handleFavCoin(coin)} size={25} />
+            <AiOutlineHeart
+              onClick={() => handleFavCoin(coin.coin.id)}
+              size={25}
+            />
           )
         ) : (
           ""

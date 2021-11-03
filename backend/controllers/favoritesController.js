@@ -1,16 +1,14 @@
 const Favorite = require("../models/Favorites");
 
-const addToFavorite = async (req, res) => {
-  console.log(req.body);
-
-  const favorite = await new Favorite(req.body);
-
-  favorite.save((err, doc) => {
-    if (err) return res.json({ success: false, err });
-    return res.status(200).json({ success: true });
+const storeFavCoin = async (req, res) => {
+  const fav = await Favorite.create({
+    userId: req.body.userId,
+    coinId: req.body.coinId,
   });
-};
 
+  res.send(fav);
+};
+/* 
 const deleteFavCoin = async (req, res) => {
   Favorite.findOneAndDelete({
     coinId: req.body.coinId,
@@ -26,10 +24,10 @@ const getFavCoin = async (req, res) => {
     if (err) return res.status(400).send(err);
     return res.status(200).json({ success: true, favorites });
   });
-};
+}; */
 
 module.exports = {
-  addToFavorite,
+  storeFavCoin /* 
   getFavCoin,
-  deleteFavCoin,
+  deleteFavCoin, */,
 };

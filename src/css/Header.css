@@ -18,6 +18,8 @@
   display: grid;
   align-items: center;
   justify-content: center;
+
+  font-family: "Bebas Neue", cursive;
 }
 
 .ad-text {
