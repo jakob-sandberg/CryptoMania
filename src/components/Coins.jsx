@@ -11,16 +11,19 @@ const Coins = (coin) => {
   const { activeUser } = useContext(UserContext);
   const [favCoin, setFavCoin] = useState(false);
 
-  const { storeFavCoin, deleteFavCoin } = useContext(FavCoinContext);
+  const { storeFavCoin, deleteFavCoin /*  userFavCoin, setUserFavCoin */ } =
+    useContext(FavCoinContext);
 
-  const handleFavCoin = (coinId) => {
+  const handleFavCoin = (coinId, userId) => {
     if (!favCoin) {
-      setFavCoin(true);
       let favToSave = {
         coinId,
+        userId,
       };
+      //setUserFavCoin([...userFavCoin, coinId]);
+      setFavCoin(true);
       storeFavCoin(favToSave);
-      console.log(favToSave);
+      console.log(storeFavCoin);
     } else if (favCoin) {
       setFavCoin(!favCoin);
       deleteFavCoin(coinId, activeUser._id);
@@ -35,12 +38,12 @@ const Coins = (coin) => {
         {activeUser ? (
           favCoin ? (
             <AiFillHeart
-              onClick={() => handleFavCoin(coin.coin.id)}
+              onClick={() => handleFavCoin(coin.coin.id, activeUser._id)}
               size={25}
             />
           ) : (
             <AiOutlineHeart
-              onClick={() => handleFavCoin(coin.coin.id)}
+              onClick={() => handleFavCoin(coin.coin.id, activeUser._id)}
               size={25}
             />
           )

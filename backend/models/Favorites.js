@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
 
 const favoriteSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: "User", default: null },
-  coinId: {
-    type: String,
-  },
+  coins: [
+    {
+      type: String,
+    },
+  ],
 });
 
 const Favorite = mongoose.model("Favorite", favoriteSchema);

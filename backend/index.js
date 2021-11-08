@@ -61,7 +61,7 @@ app.use((req, res, next) => {
 
 // Routes setup
 app.use("/api/v1/users", userRoutes);
-app.use("api/v1/favorite", favoriteRoutes);
+app.use("/api/v1/favorite", favoriteRoutes);
 
 // Start Server
 app.listen(port, (err) => {
