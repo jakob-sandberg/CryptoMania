@@ -1,23 +1,25 @@
 const Favorite = require("../models/Favorites");
 
 const storeFavCoin = async (req, res) => {
-  /*  if (req.body.userId) {
-    Favorite.findOneAndUpdate({ coins: req.body.coinId }).exec((err, doc) => {
-      if (err) return res.status(400).json({ success: false, err });
-      res.status(200).json({ success: true, doc });
-    });
-  } */
-
+  let favorite = await Favorite.findOne({ userId: req.body.userId });
+  if (favorite) {
+    if (!favorite.coins.includes(req.body.coinId)) {
+      favorite.coins.push(req.body.coinId);
+      favorite.save();
+    }
+  }
   let favExists = await Favorite.exists({ coins: req.body.coinId });
   if (favExists) {
     return res.status(400).json({ error: "U've already liked this coin" });
   } else {
-    const fav = await Favorite.create({
-      userId: req.body.userId,
-      coins: req.body.coinId,
-    });
+    if (!favorite) {
+      const fav = await Favorite.create({
+        userId: req.body.userId,
+        coins: req.body.coinId,
+      });
 
-    res.send(fav);
+      res.send(fav);
+    }
   }
 };
 
