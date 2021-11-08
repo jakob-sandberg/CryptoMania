@@ -9,6 +9,8 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
+import styles from "../css/login.module.css";
+
 import ModalWindow from "./ModalWindow";
 
 const SigUpForm = () => {
@@ -88,7 +90,7 @@ const SigUpForm = () => {
               <Form onSubmit={(e) => registerSubmitHandler(e)}>
                 <Form.Group controlId="formBasicUsername">
                   <Form.Control
-                    className="inputField"
+                    className={styles.inputField}
                     size="lg"
                     htmlFor="handleName"
                     type="name"
@@ -100,7 +102,7 @@ const SigUpForm = () => {
 
                 <Form.Group controlId="formBasicEmail">
                   <Form.Control
-                    className="inputField"
+                    className={styles.inputField}
                     size="lg"
                     htmlFor="handleEmail"
                     type="email"
@@ -118,7 +120,7 @@ const SigUpForm = () => {
                 >
                   <Form.Group controlId="formBasicPassword">
                     <Form.Control
-                      className="inputField"
+                      className={styles.inputField}
                       size="lg"
                       htmlFor="handlePassword"
                       type="password"
@@ -132,8 +134,8 @@ const SigUpForm = () => {
                 </OverlayTrigger>
                 <div className="regarea">
                   <Button
-                    className="registerButton"
-                    variant="danger"
+                    className={styles.inputField}
+                    variant="warning"
                     type="submit"
                   >
                     Register

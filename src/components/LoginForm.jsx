@@ -35,7 +35,6 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Heeeeeeeej</h1>
       <p className={styles.loginformtext}>Welcome back</p>
       <div className={styles.loginform}>
         <Form
@@ -74,7 +73,7 @@ export default function Login() {
           <Container className={`${styles.buttonContainer} text-center`}>
             <Button
               className={styles.singInButton}
-              variant="danger"
+              variant="warning"
               type="submit"
             >
               SIGN IN
