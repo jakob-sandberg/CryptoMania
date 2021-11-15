@@ -9,11 +9,12 @@ const FavCoinContextProvider = (props) => {
   const [userFavCoin, setUserFavCoin] = useState([]);
 
   useEffect(() => {
-    console.log("userFavCoins context", userFavCoin);
-  }, [userFavCoin]);
+    if (activeUser) {
+      getFavCoinsByUserId(activeUser._id);
+    }
+  }, [activeUser]);
 
   const storeFavCoin = async (favToSave) => {
-    console.log(favToSave.coinId);
     let fav = await fetch("/api/v1/favorite/savefavcoin", {
       method: "POST",
       headers: {
@@ -27,47 +28,28 @@ const FavCoinContextProvider = (props) => {
 
     return fav;
   };
-
   //
 
-  const getUserFavCoin = async () => {
-    let fav = await fetch(`/api/v1/favorite/getfavcoins`);
-    fav = await fav.json();
-    setUserFavCoin(fav);
-    console.log("getfavcoin", fav);
-  };
-
-  /*   const deleteFavCoin = async (coinId, userId) => {
-    await fetch(`/api/v1/favorite/deletefavcoin/${coinId}/${userId}`, {
+  const deleteFavCoin = async (coinId) => {
+    let result = await fetch(`/api/v1/favorite/deletefavcoin/${coinId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
       },
     });
-  }; */
-
-  const deleteFavCoin = async (coinId, userId) => {
-    let result = await fetch(`/api/v1/favorite/deletefavcoin/$${coinId}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-    getFavCoinsByUserId(userId);
+    getFavCoinsByUserId(activeUser._id);
     result = await result.json();
     return result;
   };
 
   const getFavCoinsByUserId = async (userId) => {
-    let fav = await fetch(`api/v1/favorite/user-favcoins?${userId}`);
-    fav = await fav.json();
-    setUserFavCoin(fav);
-    console.log("context", userFavCoin);
+    let coins = await fetch(`api/v1/favorite/user-favcoins?userId=${userId}`);
+    coins = await coins.json();
+    setUserFavCoin(coins);
   };
 
   const values = {
     storeFavCoin,
-    getUserFavCoin,
     deleteFavCoin,
     userFavCoin,
     setUserFavCoin,

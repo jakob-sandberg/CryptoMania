@@ -11,7 +11,7 @@ const Coins = (coin) => {
   const { activeUser } = useContext(UserContext);
   const [favCoin, setFavCoin] = useState(false);
 
-  const { storeFavCoin, deleteFavCoin /*  userFavCoin, setUserFavCoin */ } =
+  const { storeFavCoin, deleteFavCoin, userFavCoin, setUserFavCoin } =
     useContext(FavCoinContext);
 
   const handleFavCoin = (coinId, userId) => {
@@ -20,10 +20,9 @@ const Coins = (coin) => {
         coinId,
         userId,
       };
-      //setUserFavCoin([...userFavCoin, coinId]);
       setFavCoin(true);
       storeFavCoin(favToSave);
-      console.log(storeFavCoin);
+      setUserFavCoin([...userFavCoin, favToSave]);
     } else if (favCoin) {
       setFavCoin(!favCoin);
       deleteFavCoin(coinId, activeUser._id);
