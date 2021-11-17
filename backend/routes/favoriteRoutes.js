@@ -6,8 +6,8 @@ const favoritesController = require("../controllers/favoritesController");
 // User routes setup goes underneath here...
 router.post("/savefavcoin", favoritesController.storeFavCoin);
 //router.get("/getfavcoins", favoritesController.getFavCoins);
-router.get("/user-favcoins/", favoritesController.getFavCoinsByUserId);
+router.get("/userfavcoins/", favoritesController.getFavCoinsByUserId);
 
-router.delete("/deletefavprogram/:coinId", favoritesController.deleteFavCoin);
+router.delete("/:userId/:coinId", favoritesController.deleteFavCoinFromUser);
 
 module.exports = router;

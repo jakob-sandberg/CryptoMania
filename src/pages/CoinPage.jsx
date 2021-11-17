@@ -64,10 +64,6 @@ const CoinDetailPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /*  if (coinData) {
-    console.log("COINPAGE", coinData.detail);
-  } */
-
   const renderData = () => {
     if (isLoading) {
       return <div>Loading....</div>;

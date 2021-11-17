@@ -5,7 +5,9 @@ const favoriteSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: "User", default: null },
   coins: [
     {
-      type: String,
+      coinId: { type: String },
+      coinName: { type: String },
+      coinUrl: { type: String },
     },
   ],
 });

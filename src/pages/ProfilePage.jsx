@@ -1,23 +1,18 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import FavCoins from "../components/FavCoins";
 import { UserContext } from "../context/UserContext";
-import { FavCoinContext } from "../context/FavCoinContext";
+import "../css/ProfilePage.css";
 
 const ProfilePage = () => {
   const { activeUser } = useContext(UserContext);
-  const { getFavCoinsByUserId } = useContext(FavCoinContext);
-
-  useEffect(() => {
-    if (activeUser) {
-      getFavCoinsByUserId();
-    }
-    // eslint-disable-next-line
-  }, [activeUser]);
 
   return (
-    <div>
-      <h1>Hi {activeUser.name}</h1>
-      <div>
+    <div className="profilePage-container">
+      <div className="profilePage-header">
+        <h1>Hi {activeUser.name}!</h1>
+        <p>All your favorite coins in one place!</p>
+      </div>
+      <div className="profile-favCoin">
         <FavCoins />
       </div>
     </div>

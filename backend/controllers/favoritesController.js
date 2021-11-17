@@ -4,14 +4,22 @@ const storeFavCoin = async (req, res) => {
   let favorite = await Favorite.findOne({ userId: req.body.userId });
   if (favorite) {
     if (!favorite.coins.includes(req.body.coinId)) {
-      favorite.coins.push(req.body.coinId);
+      favorite.coins.push({
+        coinId: req.body.coinId,
+        coinName: req.body.coinName,
+        coinUrl: req.body.coinUrl,
+      });
       favorite.save();
     }
   } else {
     if (!favorite) {
       const fav = await Favorite.create({
         userId: req.body.userId,
-        coins: req.body.coinId,
+        coins: {
+          coinId: req.body.coinId,
+          coinName: req.body.coinName,
+          coinUrl: req.body.coinUrl,
+        },
       });
 
       res.send(fav);
@@ -19,17 +27,21 @@ const storeFavCoin = async (req, res) => {
   }
 };
 
-const deleteFavCoin = async (req, res) => {
+//coins: { coinId: req.body.coinId, coinUrl: req.body.coinUrl },
+
+const deleteFavCoinFromUser = async (req, res) => {
   try {
-    let exists = await Favorite.exists({
+    let exists = await Favorite.findOne({
       userId: req.params.userId,
-      coins: req.params.coinId,
     });
     if (exists) {
-      await Favorite.deleteOne({
-        userId: req.params.userId,
-        coins: req.params.coinId,
-      }).exec();
+      exists.coins.filter({
+        coinId: req.body.coinId,
+        coinName: req.body.coinName,
+        coinUrl: req.body.coinUrl,
+      });
+      exists.save();
+
       res.json({
         message: `Coin with id ${req.params.coinId} has been deleted.`,
       });
@@ -42,40 +54,9 @@ const deleteFavCoin = async (req, res) => {
     return;
   }
 };
-/* 
-const getFavCoin = async (req, res) => {
-  Favorite.find({ userId: req.body.userId, CoinId: req.body.coinId }).exec(
-    (err, fav) => {
-      if (err) return res.status(400).send(err);
-      return res.status(200).json({ success: true, fav });
-    }
-  );
-}; 
-
 
 const getFavCoinsByUserId = async (req, res) => {
-  Favorite.find({ userId: req.body.userId }).exec((err, fav) => {
-    // Checks for thrown errors from the method itself.
-    if (err) {
-      res.status(400).json({ error: "Something went wrong" });
-      return;
-    }
-
-    // If no match is found in the DB.
-    if (!fav) {
-      res
-        .status(404)
-        .json({ error: `The user with id ${userId} dosen't have coins` });
-      return;
-    }
-    res.json(fav);
-  });
-}; */
-
-// Get the logged in users favorite coins, that will be displayed on profilePage.
-
-const getFavCoinsByUserId = async (req, res) => {
-  Favorite.find({ userId: req.params.userId }).exec((err, coins) => {
+  Favorite.find({ userId: req.query.userId }).exec((err, coins) => {
     if (err) {
       res.status(400).json({ error: `Something went wrong ` });
       return;
@@ -86,7 +67,17 @@ const getFavCoinsByUserId = async (req, res) => {
       });
       return;
     }
-    res.json(coins);
+
+    let userCoins = [];
+
+    coins.map((oneCoin) => {
+      if (req.query.userId) {
+        userCoins.push(oneCoin);
+      } else {
+        return;
+      }
+    });
+    res.json({ userCoins });
   });
 };
 
@@ -99,6 +90,6 @@ const getFavCoinsByUserId = async (req, res) => {
 
 module.exports = {
   storeFavCoin,
-  deleteFavCoin,
+  deleteFavCoinFromUser,
   getFavCoinsByUserId,
 };

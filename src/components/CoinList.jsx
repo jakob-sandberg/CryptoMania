@@ -14,7 +14,6 @@ const CoinList = () => {
       )
       .then((res) => {
         setCoins(res.data);
-        //console.log("LIST", res.data);
       })
       .catch((error) => console.log(error));
   }, []);

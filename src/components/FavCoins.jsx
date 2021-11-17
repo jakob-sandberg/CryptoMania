@@ -1,15 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { FavCoinContext } from "../context/FavCoinContext";
 import { UserContext } from "../context/UserContext";
+import FavCoinCard from "../components/FavCoinCard";
+
+import "../css/ProfilePage.css";
 
 const FavCoins = () => {
   const { activeUser } = useContext(UserContext);
-  //const { storeFavCoin, getUserFavCoin, deleteFavCoin } =
-  useContext(FavCoinContext);
+  const { userFavCoin, getFavCoinsByUserId } = useContext(FavCoinContext);
+
+  useEffect(() => {
+    getFavCoinsByUserId(activeUser._id);
+    // eslint-disable-next-line
+  }, [activeUser]);
 
   return (
     <div>
-      <h1>{activeUser.name}s favorite Coins</h1>
+      {activeUser && (
+        <div>
+          <div>
+            {userFavCoin ? (
+              userFavCoin.map((userCoins, i) => (
+                <FavCoinCard userCoins={userCoins} key={i} />
+              ))
+            ) : (
+              <h5>No coins</h5>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

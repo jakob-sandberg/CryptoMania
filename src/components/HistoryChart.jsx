@@ -33,7 +33,7 @@ const HistoryChart = ({ data }) => {
               data: determineTimeFormat(),
               backgroundColor: "rgba(174, 305, 194, 0.5)",
               borderColor: "rgba(174, 305, 194, 0.9",
-              color: "#9c9c9c",
+              color: "rgba(174, 305, 194, 0.9",
               pointRadius: 0,
             },
           ],
