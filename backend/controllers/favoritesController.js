@@ -3,7 +3,7 @@ const Favorite = require("../models/Favorites");
 const storeFavCoin = async (req, res) => {
   let favorite = await Favorite.findOne({ userId: req.body.userId });
   if (favorite) {
-    if (!favorite.coins.includes(req.body.coinId)) {
+    if (!favorite.coins.some((coin) => coin.coinId === req.body.coinId)) {
       favorite.coins.push({
         coinId: req.body.coinId,
         coinName: req.body.coinName,
@@ -35,11 +35,9 @@ const deleteFavCoinFromUser = async (req, res) => {
       userId: req.params.userId,
     });
     if (exists) {
-      exists.coins.filter({
-        coinId: req.body.coinId,
-        coinName: req.body.coinName,
-        coinUrl: req.body.coinUrl,
-      });
+      exists.coins = exists.coins.filter(
+        (coin) => coin.coinId != req.params.coinId
+      );
       exists.save();
 
       res.json({
