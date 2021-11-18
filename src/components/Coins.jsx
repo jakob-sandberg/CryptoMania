@@ -32,7 +32,7 @@ const Coins = (coin) => {
       setUserFavCoin([...userFavCoin, favToSave]);
       getFavCoinsByUserId(activeUser._id);
     } else if (favCoin) {
-      setFavCoin(!favCoin);
+      setFavCoin(false);
       deleteFavCoin(coinId, activeUser._id);
     }
   };

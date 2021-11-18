@@ -19,13 +19,10 @@ const FavCoins = () => {
       {activeUser && (
         <div>
           <div>
-            {userFavCoin ? (
+            {userFavCoin &&
               userFavCoin.map((userCoins, i) => (
                 <FavCoinCard userCoins={userCoins} key={i} />
-              ))
-            ) : (
-              <h5>No coins</h5>
-            )}
+              ))}
           </div>
         </div>
       )}

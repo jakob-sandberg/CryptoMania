@@ -6,7 +6,9 @@ function TrendingPage() {
   return (
     <div className="trending-container">
       <div className="trend-content">
-        <h2 className="trend-rubrik">trending coins over the last 7 days</h2>
+        <h2 className="trend-rubrik">
+          Don't sleep ont these coins the may be the next Bitcoin!
+        </h2>
         <TrendingList />
       </div>
     </div>

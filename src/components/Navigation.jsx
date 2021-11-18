@@ -33,7 +33,7 @@ const Navigation = () => {
                 {activeUser ? (
                   <React.Fragment>
                     <Nav.Link as={Link} to="/profile" className="nav-link">
-                      <span className="nav-span">Profile</span>
+                      <span className="nav-span">My Coins</span>
                     </Nav.Link>
                     <Nav.Link
                       eventKey="4"
